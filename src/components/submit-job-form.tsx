@@ -77,9 +77,9 @@ export function SubmitJobForm({ onSubmit, isSubmitting }: SubmitJobFormProps) {
             />
           </div>
 
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+          <div className="flex items-center justify-between p-3 bg-brand-dark-tertiary rounded-lg">
             <div>
-              <Label htmlFor="requestReview" className="cursor-pointer">
+              <Label htmlFor="requestReview" className="cursor-pointer text-gray-200">
                 Request Human Review
               </Label>
               <p className="text-xs text-gray-500 mt-0.5">

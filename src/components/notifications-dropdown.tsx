@@ -58,10 +58,10 @@ export function NotificationsDropdown({
           />
           <Card className="absolute right-0 top-full mt-2 w-80 z-20 shadow-lg">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium flex items-center justify-between">
+              <CardTitle className="text-sm font-medium flex items-center justify-between text-gray-100">
                 Notifications
                 {unreadCount > 0 && (
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-400">
                     {unreadCount} unread
                   </span>
                 )}
@@ -73,13 +73,13 @@ export function NotificationsDropdown({
                   No notifications
                 </div>
               ) : (
-                <ul className="divide-y">
+                <ul className="divide-y divide-brand-dark-border">
                   {notifications.map((notification) => (
                     <li
                       key={notification.id}
                       className={cn(
-                        'p-3 hover:bg-gray-50 cursor-pointer transition-colors',
-                        !notification.read && 'bg-blue-50 hover:bg-blue-100'
+                        'p-3 hover:bg-brand-dark-tertiary cursor-pointer transition-colors',
+                        !notification.read && 'bg-brand-primary/10 hover:bg-brand-primary/20'
                       )}
                       onClick={() => {
                         if (!notification.read) {
@@ -92,7 +92,7 @@ export function NotificationsDropdown({
                           {getNotificationIcon(notification.type)}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-gray-900">
+                          <p className="text-sm text-gray-200">
                             {notification.message}
                           </p>
                           <p className="text-xs text-gray-500 mt-1">
@@ -101,7 +101,7 @@ export function NotificationsDropdown({
                         </div>
                         {!notification.read && (
                           <div className="flex-shrink-0">
-                            <div className="h-2 w-2 rounded-full bg-blue-600" />
+                            <div className="h-2 w-2 rounded-full bg-brand-primary" />
                           </div>
                         )}
                       </div>

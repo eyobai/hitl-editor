@@ -11,6 +11,17 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        // Lesan AI Brand Colors
+        brand: {
+          primary: "#4C8BF5",
+          "primary-hover": "#3B7AE4",
+          dark: "#0f0f0f",
+          "dark-secondary": "#1a1a1a",
+          "dark-tertiary": "#252525",
+          "dark-card": "#2a2a2a",
+          "dark-border": "#333333",
+          "dark-input": "#333333",
+        },
       },
     },
   },

@@ -2,13 +2,16 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { Job, Notification } from '@/lib/types';
-import { JobList } from '@/components/job-list';
-import { SubmitJobForm } from '@/components/submit-job-form';
-import { NotificationsDropdown } from '@/components/notifications-dropdown';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FileAudio, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { DashboardLayout } from '@/components/layout/dashboard-layout';
+import { Header } from '@/components/layout/header';
+import { StatsCard } from '@/components/stats-card';
+import { JobCardPro } from '@/components/job-card-pro';
+import { NewJobModal } from '@/components/new-job-modal';
+import { FileAudio, Clock, CheckCircle, AlertCircle, Inbox } from 'lucide-react';
 
 const DEMO_USER_ID = 'user-client-1';
+const DEMO_USER_NAME = 'Negasi Haile';
+const DEMO_USER_EMAIL = 'negasi@lesan.ai';
 
 export default function ClientDashboard() {
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -16,6 +19,8 @@ export default function ClientDashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [updatingJobId, setUpdatingJobId] = useState<string | undefined>();
+  const [isNewJobModalOpen, setIsNewJobModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const fetchJobs = useCallback(async () => {
     try {
@@ -49,7 +54,6 @@ export default function ClientDashboard() {
     };
     loadData();
 
-    // Poll for updates every 10 seconds
     const interval = setInterval(() => {
       fetchJobs();
       fetchNotifications();
@@ -129,116 +133,109 @@ export default function ClientDashboard() {
     pendingReview: jobs.filter((j) => j.status === 'pending_review' || j.status === 'in_review').length,
   };
 
+  // Filter jobs by search
+  const filteredJobs = jobs.filter((job) =>
+    job.audioFileName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900" />
+      <div className="min-h-screen bg-brand-dark flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-primary" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <FileAudio className="h-6 w-6 text-gray-900" />
-              <h1 className="text-xl font-semibold text-gray-900">
-                HITL Transcription
-              </h1>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">Demo Client</span>
-              <NotificationsDropdown
-                notifications={notifications}
-                onMarkAsRead={handleMarkNotificationAsRead}
-              />
-            </div>
-          </div>
-        </div>
-      </header>
+    <DashboardLayout
+      userRole="client"
+      userName={DEMO_USER_NAME}
+      userEmail={DEMO_USER_EMAIL}
+    >
+      <Header
+        title="Dashboard"
+        subtitle="Manage your transcription jobs"
+        notifications={notifications}
+        onMarkNotificationRead={handleMarkNotificationAsRead}
+        showNewJobButton
+        onNewJob={() => setIsNewJobModalOpen(true)}
+        searchPlaceholder="Search jobs..."
+        onSearch={setSearchQuery}
+      />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Cards */}
+      <div className="p-6">
+        {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-gray-100 rounded-lg">
-                  <FileAudio className="h-5 w-5 text-gray-600" />
-                </div>
-                <div>
-                  <p className="text-2xl font-semibold">{stats.total}</p>
-                  <p className="text-sm text-gray-500">Total Jobs</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Clock className="h-5 w-5 text-blue-600" />
-                </div>
-                <div>
-                  <p className="text-2xl font-semibold">{stats.processing}</p>
-                  <p className="text-sm text-gray-500">Processing</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-orange-100 rounded-lg">
-                  <AlertCircle className="h-5 w-5 text-orange-600" />
-                </div>
-                <div>
-                  <p className="text-2xl font-semibold">{stats.pendingReview}</p>
-                  <p className="text-sm text-gray-500">Pending Review</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-green-100 rounded-lg">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                </div>
-                <div>
-                  <p className="text-2xl font-semibold">{stats.completed}</p>
-                  <p className="text-sm text-gray-500">Completed</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <StatsCard
+            title="Total Jobs"
+            value={stats.total}
+            icon={FileAudio}
+            iconColor="text-gray-400"
+            iconBgColor="bg-brand-dark-tertiary"
+          />
+          <StatsCard
+            title="Processing"
+            value={stats.processing}
+            icon={Clock}
+            iconColor="text-blue-400"
+            iconBgColor="bg-blue-500/20"
+          />
+          <StatsCard
+            title="Pending Review"
+            value={stats.pendingReview}
+            icon={AlertCircle}
+            iconColor="text-orange-400"
+            iconBgColor="bg-orange-500/20"
+          />
+          <StatsCard
+            title="Completed"
+            value={stats.completed}
+            icon={CheckCircle}
+            iconColor="text-green-400"
+            iconBgColor="bg-green-500/20"
+          />
         </div>
 
-        {/* Submit New Job */}
-        <div className="mb-8">
-          <SubmitJobForm onSubmit={handleSubmitJob} isSubmitting={isSubmitting} />
+        {/* Jobs Section */}
+        <div className="mb-4">
+          <h2 className="text-lg font-semibold text-white mb-1">Recent Jobs</h2>
+          <p className="text-sm text-gray-400">
+            {filteredJobs.length} {filteredJobs.length === 1 ? 'job' : 'jobs'} found
+          </p>
         </div>
 
-        {/* Jobs List */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Your Transcription Jobs</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <JobList
-              jobs={jobs}
-              onRequestReviewToggle={handleRequestReviewToggle}
-              isUpdating={updatingJobId}
-            />
-          </CardContent>
-        </Card>
-      </main>
-    </div>
+        {/* Job Cards */}
+        {filteredJobs.length === 0 ? (
+          <div className="bg-brand-dark-card border border-brand-dark-border rounded-xl p-12 text-center">
+            <div className="w-16 h-16 mx-auto rounded-full bg-brand-dark-tertiary flex items-center justify-center mb-4">
+              <Inbox className="h-8 w-8 text-gray-500" />
+            </div>
+            <h3 className="text-lg font-medium text-white mb-2">No jobs yet</h3>
+            <p className="text-sm text-gray-400 mb-6">
+              Submit your first transcription job to get started
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {filteredJobs.map((job) => (
+              <JobCardPro
+                key={job.id}
+                job={job}
+                onRequestReviewToggle={handleRequestReviewToggle}
+                isUpdating={updatingJobId === job.id}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* New Job Modal */}
+      <NewJobModal
+        isOpen={isNewJobModalOpen}
+        onClose={() => setIsNewJobModalOpen(false)}
+        onSubmit={handleSubmitJob}
+        isSubmitting={isSubmitting}
+      />
+    </DashboardLayout>
   );
 }

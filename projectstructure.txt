@@ -1,0 +1,99 @@
+Human-in-the-Loop (HITL) Editor
+Goal: A "verification" workflow where customers request human proofreading. This requires a role-based interface.
+UI/UX Requirements
+Role-Based Views:
+Client View: Submit file -> Toggle "Request Human Verification" -> Status changes to Pending Review -> Notification when Verified.
+Editor/Admin View: A "Task Queue" dashboard showing only jobs marked Pending Review.
+The Editor Interface:
+Waveform Player: Visual waveform (use wavesurfer.js) synced with text.
+Text Editor: Clicking a word in the text seeks the audio to that timestamp.
+Shortcuts: Tab to play/pause, Ctrl+Enter to mark as Verified.
+Locking: When an Editor opens a task, it must be "Locked" so other editors don't work on it simultaneously.
+
+
+
+1. Proposed Tech Stack
+Framework: Next.js 14 (App Router)
+Language: TypeScript
+Styling: Tailwind CSS
+State Management: TanStack (React Query)
+Audio Visualization: wavesurfer.js
+Authentication: NextAuth.js (role-based access)
+Real-time Updates: Polling or Socket.io (for task locking)
+
+2. Frontend Structure 
+The frontend will be organized into three main areas:
+Client area: Job list and “Request Review” actions
+Editor area: Review queue and transcript editor
+Auth area: Login and role-based access control
+The editor interface will include:
+Audio waveform playback
+Time-synced editable transcript segments
+Task lock indicators
+Keyboard shortcuts for speed and accur
+
+3. API Gap Summary
+After reviewing the current API, the following capabilities required for the HITL workflow are not yet available:
+Submitting jobs for human review
+Review task queue management
+Task locking to prevent concurrent edits
+Saving verified/edited transcripts
+Role-based access (Client vs Editor)
+
+
+
+
+Milestone 1: Project Setup & Core Infrastructure
+Goal: Foundation for the entire application
+Install dependencies: next-auth, tanstack/react-query, wavesurfer.js, lucide-react, class-variance-authority, uuid
+Create TypeScript types (Job, User, TaskLock, Transcript, etc.)
+Set up utility functions (cn, formatDate, formatDuration)
+Create in-memory data store with demo data
+Build reusable UI components (Button, Card, Badge, Input)
+
+
+Milestone 2: Client Dashboard
+Goal: Clients can view and manage their jobs
+Job list with status badges
+"Submit New Job" form (audio URL input)
+"Request Human Review" toggle per job
+Status indicators: Pending → Processing → Completed/Pending Review → Verified
+Notifications when job is verified
+
+Milestone 3: Editor Task Queue
+Goal: Editors see jobs needing review
+Queue dashboard showing pending_review and in_review jobs
+Filter/sort by date, status
+Lock indicator showing which tasks are being edited
+"Start Review" button to claim a task
+
+Milestone 4: Editor Interface Core
+Goal: Audio playback with visual waveform
+Integrate wavesurfer.js for waveform visualization
+Play/pause controls
+Seek by clicking waveform
+Display current time and duration
+
+Milestone 5: Transcript Editor
+Goal: Edit transcript synced with audio
+Display segments with timestamps
+Click a segment/word → seek audio to that timestamp
+Inline editing of transcript text
+Visual highlighting of current segment during playback
+
+Milestone 6: Task Locking
+Goal: Prevent simultaneous editing
+Acquire lock when editor opens a task
+Show "Locked by [Name]" indicator to others
+Auto-release lock after 30 min timeout
+Refresh lock on activity
+Release lock on navigation away
+
+Milestone 7: Keyboard Shortcuts & Verification
+Goal: Efficient editing workflow
+Tab → Play/Pause audio
+Ctrl+Enter → Mark as Verified and submit
+Save edited transcript
+Return to queue after verification
+Notify client of completion
+

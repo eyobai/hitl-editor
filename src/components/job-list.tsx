@@ -20,9 +20,9 @@ export function JobList({ jobs, onRequestReviewToggle, isUpdating }: JobListProp
   if (jobs.length === 0) {
     return (
       <div className="text-center py-12">
-        <FileAudio className="mx-auto h-12 w-12 text-gray-400" />
-        <h3 className="mt-2 text-sm font-medium text-gray-900">No jobs yet</h3>
-        <p className="mt-1 text-sm text-gray-500">
+        <FileAudio className="mx-auto h-12 w-12 text-gray-500" />
+        <h3 className="mt-2 text-sm font-medium text-gray-200">No jobs yet</h3>
+        <p className="mt-1 text-sm text-gray-400">
           Submit a new transcription job to get started.
         </p>
       </div>
@@ -59,19 +59,19 @@ function JobCard({ job, onRequestReviewToggle, isUpdating }: JobCardProps) {
     job.status === 'verified';
 
   return (
-    <Card className="hover:shadow-md transition-shadow">
+    <Card className="hover:border-brand-dark-tertiary transition-all">
       <CardContent className="p-4">
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-3 mb-2">
-              <FileAudio className="h-5 w-5 text-gray-400 flex-shrink-0" />
-              <h3 className="font-medium text-gray-900 truncate">
+              <FileAudio className="h-5 w-5 text-gray-500 flex-shrink-0" />
+              <h3 className="font-medium text-gray-100 truncate">
                 {job.audioFileName}
               </h3>
               <StatusBadge status={job.status} />
             </div>
 
-            <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+            <div className="flex flex-wrap gap-4 text-sm text-gray-400">
               <div className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
                 <span>Created: {formatDate(job.createdAt)}</span>
@@ -85,7 +85,7 @@ function JobCard({ job, onRequestReviewToggle, isUpdating }: JobCardProps) {
               )}
 
               {job.verifiedAt && job.verifiedBy && (
-                <div className="flex items-center gap-1 text-green-600">
+                <div className="flex items-center gap-1 text-green-400">
                   <UserCheck className="h-4 w-4" />
                   <span>Verified: {formatDate(job.verifiedAt)}</span>
                 </div>
@@ -97,7 +97,7 @@ function JobCard({ job, onRequestReviewToggle, isUpdating }: JobCardProps) {
             <div className="flex items-center gap-2 flex-shrink-0">
               <Label
                 htmlFor={`review-${job.id}`}
-                className="text-sm text-gray-600 cursor-pointer"
+                className="text-sm text-gray-400 cursor-pointer"
               >
                 Human Review
               </Label>
@@ -119,8 +119,8 @@ function JobCard({ job, onRequestReviewToggle, isUpdating }: JobCardProps) {
         </div>
 
         {job.transcript && job.status !== 'pending' && job.status !== 'processing' && (
-          <div className="mt-3 pt-3 border-t">
-            <p className="text-sm text-gray-600 line-clamp-2">
+          <div className="mt-3 pt-3 border-t border-brand-dark-border">
+            <p className="text-sm text-gray-400 line-clamp-2">
               {job.editedTranscript?.text || job.transcript.text || 
                 job.transcript.segments.map(s => s.text).join(' ').substring(0, 200) + '...'}
             </p>

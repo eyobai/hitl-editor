@@ -4,16 +4,16 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-primary disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
-        default: 'bg-gray-900 text-gray-50 shadow hover:bg-gray-900/90',
-        destructive: 'bg-red-500 text-gray-50 shadow-sm hover:bg-red-500/90',
-        outline: 'border border-gray-200 bg-white shadow-sm hover:bg-gray-100 hover:text-gray-900',
-        secondary: 'bg-gray-100 text-gray-900 shadow-sm hover:bg-gray-100/80',
-        ghost: 'hover:bg-gray-100 hover:text-gray-900',
-        link: 'text-gray-900 underline-offset-4 hover:underline',
+        default: 'bg-brand-primary text-white shadow hover:bg-brand-primary-hover',
+        destructive: 'bg-red-500 text-white shadow-sm hover:bg-red-500/90',
+        outline: 'border border-brand-dark-border bg-brand-dark-card text-gray-200 shadow-sm hover:bg-brand-dark-tertiary',
+        secondary: 'bg-brand-dark-tertiary text-gray-200 shadow-sm hover:bg-brand-dark-card',
+        ghost: 'text-gray-300 hover:bg-brand-dark-tertiary hover:text-white',
+        link: 'text-brand-primary underline-offset-4 hover:underline',
         success: 'bg-green-600 text-white shadow-sm hover:bg-green-600/90',
       },
       size: {

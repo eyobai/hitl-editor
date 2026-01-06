@@ -10,8 +10,8 @@ import { NewJobModal } from '@/components/new-job-modal';
 import { FileAudio, Clock, CheckCircle, AlertCircle, Inbox } from 'lucide-react';
 
 const DEMO_USER_ID = 'user-client-1';
-const DEMO_USER_NAME = 'Negasi Haile';
-const DEMO_USER_EMAIL = 'negasi@lesan.ai';
+const DEMO_USER_NAME = 'Eyob Sisay';
+const DEMO_USER_EMAIL = 'eyob@lesan.ai';
 
 export default function ClientDashboard() {
   const [jobs, setJobs] = useState<Job[]>([]);

@@ -97,7 +97,6 @@ export function NewJobModal({
 
     await onSubmit(audioUrl.trim(), audioFileName.trim(), requestHumanReview);
 
-    // Reset form
     setAudioUrl('');
     setAudioFileName('');
     setRequestHumanReview(false);
@@ -119,7 +118,6 @@ export function NewJobModal({
       size="md"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Input Mode Tabs */}
         <div className="flex gap-2 p-1 bg-brand-dark-tertiary rounded-lg">
           <button
             type="button"
@@ -159,7 +157,6 @@ export function NewJobModal({
           </button>
         </div>
 
-        {/* File Upload Area */}
         <input
           ref={fileInputRef}
           type="file"
@@ -168,7 +165,6 @@ export function NewJobModal({
           className="hidden"
           disabled={isSubmitting}
         />
-        {/* File Upload Mode */}
         {inputMode === 'file' && (
           <>
             {selectedFile ? (
@@ -215,7 +211,6 @@ export function NewJobModal({
           </>
         )}
 
-        {/* YouTube Mode */}
         {inputMode === 'youtube' && (
           <div className="space-y-4">
             {audioUrl ? (
@@ -284,7 +279,6 @@ export function NewJobModal({
           </div>
         )}
 
-        {/* URL Mode */}
         {inputMode === 'url' && (
           <>
             <div className="space-y-2">
@@ -321,7 +315,6 @@ export function NewJobModal({
           </>
         )}
 
-        {/* Human Review Toggle */}
         <div className="flex items-center justify-between p-4 bg-brand-dark-tertiary rounded-xl">
           <div>
             <p className="text-sm font-medium text-gray-200">Request Human Review</p>
@@ -336,7 +329,6 @@ export function NewJobModal({
           />
         </div>
 
-        {/* Actions */}
         <div className="flex gap-3 pt-2">
           <Button
             type="button"

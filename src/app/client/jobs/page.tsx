@@ -139,7 +139,6 @@ export default function ClientJobsPage() {
     }
   };
 
-  // Filter jobs by search and status
   const filteredJobs = jobs.filter((job) => {
     const matchesSearch = job.audioFileName.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesStatus = statusFilter === 'all' || job.status === statusFilter;
@@ -170,7 +169,6 @@ export default function ClientJobsPage() {
       />
 
       <div className="p-6">
-        {/* Status Filter */}
         <div className="flex gap-2 mb-6 flex-wrap">
           {['all', 'processing', 'pending_review', 'in_review',  'verified'].map((status) => (
             <button
@@ -187,14 +185,12 @@ export default function ClientJobsPage() {
           ))}
         </div>
 
-        {/* Jobs Count */}
         <div className="mb-4">
           <p className="text-sm text-gray-400">
             {filteredJobs.length} {filteredJobs.length === 1 ? 'job' : 'jobs'} found
           </p>
         </div>
 
-        {/* Job Cards */}
         {filteredJobs.length === 0 ? (
           <div className="bg-brand-dark-card border border-brand-dark-border rounded-xl p-12 text-center">
             <div className="w-16 h-16 mx-auto rounded-full bg-brand-dark-tertiary flex items-center justify-center mb-4">

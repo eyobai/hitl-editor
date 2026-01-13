@@ -48,12 +48,10 @@ export function JobCardPro({
   return (
     <div className="group bg-brand-dark-card border border-brand-dark-border rounded-xl p-5 hover:border-brand-dark-tertiary transition-all">
       <div className="flex items-start gap-4">
-        {/* Icon */}
         <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
           <FileAudio className="h-6 w-6 text-brand-primary" />
         </div>
 
-        {/* Content */}
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
@@ -70,7 +68,6 @@ export function JobCardPro({
               </div>
             </div>
 
-            {/* Actions Menu */}
             <div className="relative flex-shrink-0">
               <button
                 onClick={() => setShowMenu(!showMenu)}
@@ -125,7 +122,6 @@ export function JobCardPro({
             </div>
           </div>
 
-          {/* Meta Info */}
           <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-gray-500">
             <div className="flex items-center gap-1.5">
               <Calendar className="h-4 w-4" />
@@ -145,7 +141,6 @@ export function JobCardPro({
             )}
           </div>
 
-          {/* Transcript Preview */}
           {job.transcript && job.status !== 'pending' && job.status !== 'processing' && (
             <p className="mt-3 text-sm text-gray-400 line-clamp-2">
               {job.editedTranscript?.text ||
@@ -156,7 +151,6 @@ export function JobCardPro({
         </div>
       </div>
 
-      {/* Footer with Review Toggle */}
       {showReviewToggle && (
         <div className="flex items-center justify-between mt-4 pt-4 border-t border-brand-dark-border">
           <div className="flex items-center gap-2">
@@ -166,7 +160,6 @@ export function JobCardPro({
               onCheckedChange={(checked) => onRequestReviewToggle(job.id, checked)}
               disabled={
                 isUpdating ||
-                job.status === 'pending_review' ||
                 job.status === 'in_review' ||
                 job.status === 'verified'
               }

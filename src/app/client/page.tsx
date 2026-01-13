@@ -57,7 +57,7 @@ export default function ClientDashboard() {
     const interval = setInterval(() => {
       fetchJobs();
       fetchNotifications();
-    }, 10000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [fetchJobs, fetchNotifications]);
@@ -122,6 +122,52 @@ export default function ClientDashboard() {
       await fetchNotifications();
     } catch (error) {
       console.error('Failed to mark notification as read:', error);
+    }
+  };
+
+  const handleViewDetails = (jobId: string) => {
+    const job = jobs.find((j) => j.id === jobId);
+    if (job?.transcript) {
+      const text = job.editedTranscript?.segments?.map((s) => s.text).join('\n\n') ||
+        job.transcript.segments.map((s) => s.text).join('\n\n');
+      alert(`Transcript for ${job.audioFileName}:\n\n${text}`);
+    } else {
+      alert('No transcript available for this job.');
+    }
+  };
+
+  const handleDownload = (job: Job) => {
+    if (!job.transcript) {
+      alert('No transcript available to download.');
+      return;
+    }
+    const text = job.editedTranscript?.segments?.map((s) => s.text).join('\n\n') ||
+      job.transcript.segments.map((s) => s.text).join('\n\n');
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${job.audioFileName.replace(/\.[^/.]+$/, '')}_transcript.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleDelete = async (jobId: string) => {
+    try {
+      const response = await fetch(`/api/jobs/${jobId}`, {
+        method: 'DELETE',
+      });
+      const result = await response.json();
+      if (result.success) {
+        await fetchJobs();
+      } else {
+        alert('Failed to delete job');
+      }
+    } catch (error) {
+      console.error('Failed to delete job:', error);
+      alert('Failed to delete job');
     }
   };
 
@@ -222,6 +268,9 @@ export default function ClientDashboard() {
                 key={job.id}
                 job={job}
                 onRequestReviewToggle={handleRequestReviewToggle}
+                onView={handleViewDetails}
+                onDownload={handleDownload}
+                onDelete={handleDelete}
                 isUpdating={updatingJobId === job.id}
               />
             ))}

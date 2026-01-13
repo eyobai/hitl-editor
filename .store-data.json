@@ -1,0 +1,229 @@
+{
+  "users": {
+    "user-client-1": {
+      "id": "user-client-1",
+      "email": "client@demo.com",
+      "name": "Demo Client",
+      "role": "client",
+      "createdAt": "2026-01-13T12:14:01.856Z"
+    },
+    "user-editor-1": {
+      "id": "user-editor-1",
+      "email": "editor@demo.com",
+      "name": "Demo Editor",
+      "role": "editor",
+      "createdAt": "2026-01-13T12:14:01.856Z"
+    },
+    "user-admin-1": {
+      "id": "user-admin-1",
+      "email": "admin@demo.com",
+      "name": "Demo Admin",
+      "role": "admin",
+      "createdAt": "2026-01-13T12:14:01.856Z"
+    }
+  },
+  "jobs": {
+    "demo-job-1": {
+      "id": "demo-job-1",
+      "userId": "user-client-1",
+      "audioUrl": "/Firtuna_poem.mp3",
+      "audioFileName": "amharicaudio.mp3",
+      "status": "pending_review",
+      "requestHumanReview": true,
+      "transcript": {
+        "job_id": "demo-job-1",
+        "status": "COMPLETED",
+        "duration": 120.5,
+        "language": "am",
+        "text": "",
+        "segments": [
+          {
+            "id": 0,
+            "start_time": "0.00",
+            "end_time": "5.50",
+            "type": "male",
+            "text": "ሰላም ለሁላችሁም። ዛሬ ስለ ቴክኖሎጂ እድገት እንነጋገራለን።"
+          },
+          {
+            "id": 1,
+            "start_time": "5.50",
+            "end_time": "12.30",
+            "type": "female",
+            "text": "አዎ፣ ቴክኖሎጂ በፍጥነት እየተለወጠ ነው። የሰው ልጆች ህይወት በጣም ተቀይሯል።"
+          },
+          {
+            "id": 2,
+            "start_time": "12.30",
+            "end_time": "20.00",
+            "type": "male",
+            "text": "በተለይ ሰው ሰራሽ አስተውሎት ወይም AI በጣም አድጓል። ብዙ ስራዎችን ያቃልላል።"
+          },
+          {
+            "id": 3,
+            "start_time": "20.00",
+            "end_time": "28.50",
+            "type": "female",
+            "text": "እውነት ነው። ነገር ግን ጥንቃቄም ያስፈልጋል። ቴክኖሎጂን በጥበብ መጠቀም አለብን።"
+          },
+          {
+            "id": 4,
+            "start_time": "28.50",
+            "end_time": "35.00",
+            "type": "male",
+            "text": "ስለ ተሳተፋችሁ እናመሰግናለን። በሚቀጥለው ጊዜ እንገናኛለን።"
+          }
+        ]
+      },
+      "createdAt": "2026-01-11T12:14:01.856Z",
+      "updatedAt": "2026-01-13T12:17:28.800Z",
+      "completedAt": "2026-01-12T12:14:01.856Z"
+    },
+    "demo-job-2": {
+      "id": "demo-job-2",
+      "userId": "user-client-1",
+      "audioUrl": "/Firtuna_poem.mp3",
+      "audioFileName": "news-broadcast-dec-2025.mp3",
+      "status": "completed",
+      "requestHumanReview": false,
+      "transcript": {
+        "job_id": "demo-job-2",
+        "status": "COMPLETED",
+        "duration": 120.5,
+        "language": "am",
+        "text": "",
+        "segments": [
+          {
+            "id": 0,
+            "start_time": "0.00",
+            "end_time": "5.50",
+            "type": "male",
+            "text": "ሰላም ለሁላችሁም። ዛሬ ስለ ቴክኖሎጂ እድገት እንነጋገራለን።"
+          },
+          {
+            "id": 1,
+            "start_time": "5.50",
+            "end_time": "12.30",
+            "type": "female",
+            "text": "አዎ፣ ቴክኖሎጂ በፍጥነት እየተለወጠ ነው። የሰው ልጆች ህይወት በጣም ተቀይሯል።"
+          },
+          {
+            "id": 2,
+            "start_time": "12.30",
+            "end_time": "20.00",
+            "type": "male",
+            "text": "በተለይ ሰው ሰራሽ አስተውሎት ወይም AI በጣም አድጓል። ብዙ ስራዎችን ያቃልላል።"
+          },
+          {
+            "id": 3,
+            "start_time": "20.00",
+            "end_time": "28.50",
+            "type": "female",
+            "text": "እውነት ነው። ነገር ግን ጥንቃቄም ያስፈልጋል። ቴክኖሎጂን በጥበብ መጠቀም አለብን።"
+          },
+          {
+            "id": 4,
+            "start_time": "28.50",
+            "end_time": "35.00",
+            "type": "male",
+            "text": "ስለ ተሳተፋችሁ እናመሰግናለን። በሚቀጥለው ጊዜ እንገናኛለን።"
+          }
+        ]
+      },
+      "createdAt": "2026-01-08T12:14:01.856Z",
+      "updatedAt": "2026-01-09T12:14:01.856Z",
+      "completedAt": "2026-01-09T12:14:01.856Z"
+    },
+    "demo-job-3": {
+      "id": "demo-job-3",
+      "userId": "user-client-1",
+      "audioUrl": "/Firtuna_poem.mp3",
+      "audioFileName": "interview-special.mp3",
+      "status": "pending_review",
+      "requestHumanReview": true,
+      "transcript": {
+        "job_id": "demo-job-3",
+        "status": "COMPLETED",
+        "duration": 120.5,
+        "language": "am",
+        "text": "",
+        "segments": [
+          {
+            "id": 0,
+            "start_time": "0.00",
+            "end_time": "5.50",
+            "type": "male",
+            "text": "ሰላም ለሁላችሁም። ዛሬ ስለ ቴክኖሎጂ እድገት እንነጋገራለን።"
+          },
+          {
+            "id": 1,
+            "start_time": "5.50",
+            "end_time": "12.30",
+            "type": "female",
+            "text": "አዎ፣ ቴክኖሎጂ በፍጥነት እየተለወጠ ነው። የሰው ልጆች ህይወት በጣም ተቀይሯል።"
+          },
+          {
+            "id": 2,
+            "start_time": "12.30",
+            "end_time": "20.00",
+            "type": "male",
+            "text": "በተለይ ሰው ሰራሽ አስተውሎት ወይም AI በጣም አድጓል። ብዙ ስራዎችን ያቃልላል።"
+          },
+          {
+            "id": 3,
+            "start_time": "20.00",
+            "end_time": "28.50",
+            "type": "female",
+            "text": "እውነት ነው። ነገር ግን ጥንቃቄም ያስፈልጋል። ቴክኖሎጂን በጥበብ መጠቀም አለብን።"
+          },
+          {
+            "id": 4,
+            "start_time": "28.50",
+            "end_time": "35.00",
+            "type": "male",
+            "text": "ስለ ተሳተፋችሁ እናመሰግናለን። በሚቀጥለው ጊዜ እንገናኛለን።"
+          }
+        ]
+      },
+      "createdAt": "2026-01-12T12:14:01.856Z",
+      "updatedAt": "2026-01-13T00:14:01.856Z",
+      "completedAt": "2026-01-13T00:14:01.856Z"
+    },
+    "f5565032-b7e3-4b77-b928-5c1d371c9a7c": {
+      "id": "f5565032-b7e3-4b77-b928-5c1d371c9a7c",
+      "userId": "user-client-1",
+      "audioUrl": "https://www.youtube.com/watch?v=ivsbunJ5aY4",
+      "audioFileName": "test",
+      "status": "pending_review",
+      "requestHumanReview": true,
+      "createdAt": "2026-01-13T12:24:08.826Z",
+      "updatedAt": "2026-01-13T12:24:29.212Z",
+      "completedAt": "2026-01-13T12:24:08.826Z"
+    },
+    "a7434059-3508-47aa-855c-0faad06fbb7b": {
+      "id": "a7434059-3508-47aa-855c-0faad06fbb7b",
+      "userId": "user-client-1",
+      "audioUrl": "https://www.youtube.com/watch?v=ivsbunJ5aY4",
+      "audioFileName": "oo",
+      "status": "verified",
+      "requestHumanReview": true,
+      "createdAt": "2026-01-13T12:36:17.907Z",
+      "updatedAt": "2026-01-13T12:42:07.418Z",
+      "completedAt": "2026-01-13T12:36:17.907Z",
+      "verifiedAt": "2026-01-13T12:42:07.418Z",
+      "verifiedBy": "user-editor-1"
+    }
+  },
+  "locks": {},
+  "notifications": {
+    "32a29534-a9e9-496e-a852-33347d349b9e": {
+      "id": "32a29534-a9e9-496e-a852-33347d349b9e",
+      "userId": "user-client-1",
+      "type": "review_completed",
+      "message": "Your transcription for \"oo\" has been verified.",
+      "jobId": "a7434059-3508-47aa-855c-0faad06fbb7b",
+      "read": false,
+      "createdAt": "2026-01-13T12:42:07.418Z"
+    }
+  },
+  "initialized": true
+}

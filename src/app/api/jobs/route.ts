@@ -1,7 +1,5 @@
-'use server';
-
 import { NextRequest, NextResponse } from 'next/server';
-import { getJobsByUserId, createJob, getJobs } from '@/lib/store';
+import { getJobsByUserId, createJob, getJobs, deleteJob } from '@/lib/store';
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;

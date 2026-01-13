@@ -17,9 +17,9 @@ export default function Home() {
             </div>
             <nav className="hidden md:flex items-center gap-8">
              
-              <Link href="#workflow" className="text-sm text-gray-400 hover:text-white transition-colors">
+              {/* <Link href="#workflow" className="text-sm text-gray-400 hover:text-white transition-colors">
                 Workflow
-              </Link>
+              </Link> */}
               <Link href="/client" className="text-sm text-gray-400 hover:text-white transition-colors">
                 Client Portal
               </Link>
@@ -28,9 +28,9 @@ export default function Home() {
               </Link>
             </nav>
             <div className="flex items-center gap-3">
-              <Link href="/client">
+              {/* <Link href="/client">
                 <Button variant="ghost" size="sm">Sign In</Button>
-              </Link>
+              </Link> */}
               <Link href="/client">
                 <Button size="sm">Get Started</Button>
               </Link>
@@ -78,8 +78,8 @@ export default function Home() {
       </section>
 
    
-
-      {/* Workflow */}
+{/* 
+     
       <section id="workflow" className="py-24 border-t border-brand-dark-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -109,7 +109,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
    
     </div>

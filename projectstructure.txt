@@ -1,4 +1,9 @@
 Human-in-the-Loop (HITL) Editor
+
+KI-AVA API - https://kiava-api.lesan.ai/docs 
+Version: 1.0
+Assumptions: APIs (FastAPI); Backend provides REST (Batch) and WebSocket (Streaming) endpoints.
+
 Goal: A "verification" workflow where customers request human proofreading. This requires a role-based interface.
 UI/UX Requirements
 Role-Based Views:

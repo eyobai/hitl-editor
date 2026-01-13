@@ -50,6 +50,9 @@ export interface Job {
   completedAt?: string;
   verifiedAt?: string;
   verifiedBy?: string;
+  // KI-AVA specific fields
+  processingTime?: number;
+  transcriptUrl?: string;
 }
 
 export interface TaskLock {

@@ -21,6 +21,8 @@ interface JobCardProProps {
   job: Job;
   onRequestReviewToggle: (jobId: string, requestReview: boolean) => void;
   onView?: (jobId: string) => void;
+  onDownload?: (job: Job) => void;
+  onDelete?: (jobId: string) => void;
   isUpdating?: boolean;
 }
 
@@ -28,6 +30,8 @@ export function JobCardPro({
   job,
   onRequestReviewToggle,
   onView,
+  onDownload,
+  onDelete,
   isUpdating,
 }: JobCardProProps) {
   const [showMenu, setShowMenu] = useState(false);
@@ -92,12 +96,26 @@ export function JobCardPro({
                       <Eye className="h-4 w-4" />
                       View Details
                     </button>
-                    <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-300 hover:bg-brand-dark-card hover:text-white transition-colors">
+                    <button
+                      onClick={() => {
+                        onDownload?.(job);
+                        setShowMenu(false);
+                      }}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-300 hover:bg-brand-dark-card hover:text-white transition-colors"
+                    >
                       <Download className="h-4 w-4" />
                       Download
                     </button>
                     <hr className="my-1 border-brand-dark-border" />
-                    <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-400 hover:bg-brand-dark-card hover:text-red-300 transition-colors">
+                    <button
+                      onClick={() => {
+                        if (confirm('Are you sure you want to delete this job?')) {
+                          onDelete?.(job.id);
+                        }
+                        setShowMenu(false);
+                      }}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-400 hover:bg-brand-dark-card hover:text-red-300 transition-colors"
+                    >
                       <Trash2 className="h-4 w-4" />
                       Delete
                     </button>

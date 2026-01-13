@@ -34,13 +34,13 @@ export function Sidebar({ userRole, userName, userEmail }: SidebarProps) {
   const clientNavItems: NavItem[] = [
     { label: 'Dashboard', href: '/client', icon: <LayoutDashboard className="h-5 w-5" /> },
     { label: 'My Jobs', href: '/client/jobs', icon: <FolderOpen className="h-5 w-5" /> },
-    { label: 'Settings', href: '/client/settings', icon: <Settings className="h-5 w-5" /> },
+    //{ label: 'Settings', href: '/client/settings', icon: <Settings className="h-5 w-5" /> },
   ];
 
   const editorNavItems: NavItem[] = [
     { label: 'Task Queue', href: '/editor', icon: <LayoutDashboard className="h-5 w-5" /> },
     { label: 'My Reviews', href: '/editor/reviews', icon: <FolderOpen className="h-5 w-5" /> },
-    { label: 'Settings', href: '/editor/settings', icon: <Settings className="h-5 w-5" /> },
+  //  { label: 'Settings', href: '/editor/settings', icon: <Settings className="h-5 w-5" /> },
   ];
 
   const navItems = userRole === 'client' ? clientNavItems : editorNavItems;
@@ -96,16 +96,7 @@ export function Sidebar({ userRole, userName, userEmail }: SidebarProps) {
         })}
       </nav>
 
-      {/* Help */}
-      <div className="px-3 pb-2">
-        <Link
-          href="/help"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-brand-dark-tertiary hover:text-white transition-all"
-        >
-          <HelpCircle className="h-5 w-5" />
-          {!collapsed && <span className="text-sm font-medium">Help & Support</span>}
-        </Link>
-      </div>
+    
 
       {/* User Profile */}
       <div className="p-3 border-t border-brand-dark-border">

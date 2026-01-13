@@ -136,12 +136,10 @@ export default function EditorDashboard() {
   const filteredAndSortedJobs = useMemo(() => {
     let result = [...jobs];
 
-    // Filter
     if (filterBy !== 'all') {
       result = result.filter((job) => job.status === filterBy);
     }
 
-    // Sort
     result.sort((a, b) => {
       switch (sortBy) {
         case 'date_desc':
@@ -201,7 +199,6 @@ export default function EditorDashboard() {
       />
 
       <div className="p-6">
-        {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <StatsCard
             title="Pending Review"
@@ -226,7 +223,6 @@ export default function EditorDashboard() {
           />
         </div>
 
-        {/* Queue Section Header with Filter/Sort */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
           <div>
             <h2 className="text-lg font-semibold text-white mb-1">Review Queue</h2>
@@ -237,7 +233,6 @@ export default function EditorDashboard() {
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Filter Dropdown */}
             <div className="relative">
               <button
                 onClick={() => {
@@ -276,7 +271,6 @@ export default function EditorDashboard() {
               )}
             </div>
 
-            {/* Sort Dropdown */}
             <div className="relative">
               <button
                 onClick={() => {
@@ -316,7 +310,6 @@ export default function EditorDashboard() {
           </div>
         </div>
 
-        {/* Task Cards */}
         {filteredAndSortedJobs.length === 0 ? (
           <div className="bg-brand-dark-card border border-brand-dark-border rounded-xl p-12 text-center">
             <div className="w-16 h-16 mx-auto rounded-full bg-brand-dark-tertiary flex items-center justify-center mb-4">

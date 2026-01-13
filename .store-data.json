@@ -185,7 +185,7 @@
         ]
       },
       "createdAt": "2026-01-12T12:14:01.856Z",
-      "updatedAt": "2026-01-13T00:14:01.856Z",
+      "updatedAt": "2026-01-13T13:25:01.854Z",
       "completedAt": "2026-01-13T00:14:01.856Z"
     },
     "f5565032-b7e3-4b77-b928-5c1d371c9a7c": {
@@ -193,10 +193,10 @@
       "userId": "user-client-1",
       "audioUrl": "https://www.youtube.com/watch?v=ivsbunJ5aY4",
       "audioFileName": "test",
-      "status": "pending_review",
-      "requestHumanReview": true,
+      "status": "completed",
+      "requestHumanReview": false,
       "createdAt": "2026-01-13T12:24:08.826Z",
-      "updatedAt": "2026-01-13T12:24:29.212Z",
+      "updatedAt": "2026-01-13T13:24:06.748Z",
       "completedAt": "2026-01-13T12:24:08.826Z"
     },
     "a7434059-3508-47aa-855c-0faad06fbb7b": {
@@ -223,6 +223,15 @@
       "jobId": "a7434059-3508-47aa-855c-0faad06fbb7b",
       "read": false,
       "createdAt": "2026-01-13T12:42:07.418Z"
+    },
+    "85e5e440-b399-4dc2-8974-bd26b3f68b8a": {
+      "id": "85e5e440-b399-4dc2-8974-bd26b3f68b8a",
+      "userId": "user-client-1",
+      "type": "review_completed",
+      "message": "Your transcription for \"Firtuna poem.mp3\" has been verified.",
+      "jobId": "a66c5037-ccae-452c-8cb5-526230fcbcd5",
+      "read": false,
+      "createdAt": "2026-01-13T13:23:01.770Z"
     }
   },
   "initialized": true

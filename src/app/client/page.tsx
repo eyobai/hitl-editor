@@ -171,7 +171,6 @@ export default function ClientDashboard() {
     }
   };
 
-  // Calculate stats
   const stats = {
     total: jobs.length,
     processing: jobs.filter((j) => j.status === 'pending' || j.status === 'processing').length,
@@ -179,7 +178,6 @@ export default function ClientDashboard() {
     pendingReview: jobs.filter((j) => j.status === 'pending_review' || j.status === 'in_review').length,
   };
 
-  // Filter jobs by search
   const filteredJobs = jobs.filter((job) =>
     job.audioFileName.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -210,7 +208,6 @@ export default function ClientDashboard() {
       />
 
       <div className="p-6">
-        {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <StatsCard
             title="Total Jobs"
@@ -242,7 +239,6 @@ export default function ClientDashboard() {
           />
         </div>
 
-        {/* Jobs Section */}
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-white mb-1">Recent Jobs</h2>
           <p className="text-sm text-gray-400">
@@ -250,7 +246,6 @@ export default function ClientDashboard() {
           </p>
         </div>
 
-        {/* Job Cards */}
         {filteredJobs.length === 0 ? (
           <div className="bg-brand-dark-card border border-brand-dark-border rounded-xl p-12 text-center">
             <div className="w-16 h-16 mx-auto rounded-full bg-brand-dark-tertiary flex items-center justify-center mb-4">
@@ -278,7 +273,6 @@ export default function ClientDashboard() {
         )}
       </div>
 
-      {/* New Job Modal */}
       <NewJobModal
         isOpen={isNewJobModalOpen}
         onClose={() => setIsNewJobModalOpen(false)}
